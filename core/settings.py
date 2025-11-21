@@ -74,12 +74,33 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# core/settings.py
+
+import os # Asegúrate de que esta línea esté al inicio si no lo está
+import dj_database_url # Importa el manejador de URLs
+
+# ... (El resto de tus settings) ...
+
+# Configuración dinámica de la Base de Datos
+# Si existe la variable de entorno DATABASE_URL (que la dará Render), úsala.
+# Si no existe (estamos en tu PC), usa SQLite (db.sqlite3).
+
+if os.environ.get('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL'),
+            conn_max_age=600, 
+            conn_health_check=True,
+        )
     }
-}
+else:
+    # Configuración de tu base de datos local (SQLite)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
