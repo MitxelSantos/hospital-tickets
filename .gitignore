@@ -1,0 +1,10 @@
+# Archivos de Python y Django
+*.pyc
+*~
+__pycache__
+myvenv
+venv
+db.sqlite3
+/staticfiles
+.DS_Store
+.vscode

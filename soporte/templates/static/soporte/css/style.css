@@ -1,0 +1,16 @@
+/* Cambiar el fondo del encabezado a un color más institucional, como el azul oscuro */
+.card-header {
+    background-color: #1a4f94 !important; /* Azul oscuro */
+    border-bottom: 3px solid #f9a03f; /* Línea de color acento (naranja/dorado) */
+}
+
+/* Mejorar la fuente */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Cambiar el color del botón de envío a un verde más vibrante */
+.btn-success {
+    background-color: #008000;
+    border-color: #008000;
+}
